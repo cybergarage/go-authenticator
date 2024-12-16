@@ -14,6 +14,32 @@
 
 package auth
 
+import (
+	"crypto/tls"
+
+	"github.com/cybergarage/go-sasl/sasl"
+	"github.com/cybergarage/go-sasl/sasl/auth"
+	"github.com/cybergarage/go-sasl/sasl/cred"
+)
+
 // Server represents an authenticator server.
 type Server interface {
+	// Version returns the version.
+	Version() string
+	// Mechanisms returns the mechanisms.
+	Mechanisms() []sasl.Mechanism
+	// Mechanism returns a mechanism by name.
+	Mechanism(name string) (sasl.Mechanism, error)
+	// SetCredentialAuthenticator sets the credential authenticator.
+	SetCredentialAuthenticator(auth auth.CredentialAuthenticator)
+	// SetCredentialStore sets the credential store.
+	SetCredentialStore(credStore cred.Store)
+	// CredentialStore returns the credential store.
+	CredentialStore() cred.Store
+	// VerifyCredential verifies the client credential.
+	VerifyCredential(conn auth.Conn, q cred.Query) (bool, error)
+	// SetCertificateAuthenticator sets the certificate authenticator.
+	SetCertificateAuthenticator(auth CertificateAuthenticator)
+	// VerifyCertificate verifies the client certificate.
+	VerifyCertificate(conn Conn, state tls.ConnectionState) (bool, error)
 }
