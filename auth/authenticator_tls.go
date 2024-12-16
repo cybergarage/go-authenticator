@@ -18,15 +18,15 @@ import (
 	"crypto/tls"
 )
 
-type defaultTLSAuthenticator struct {
+type defaultCertificateAuthenticator struct {
 }
 
 // NewDefaultCertificateAuthenticator creates a new defaultTLSAuthenticator.
 func NewDefaultCertificateAuthenticator() CertificateAuthenticator {
-	return &defaultTLSAuthenticator{}
+	return &defaultCertificateAuthenticator{}
 }
 
 // VerifyTLSential verifies the client credential.
-func (a *defaultTLSAuthenticator) VerifyCertificate(conn Conn, state tls.ConnectionState) (bool, error) {
+func (a *defaultCertificateAuthenticator) VerifyCertificate(conn Conn, state tls.ConnectionState) (bool, error) {
 	return true, nil
 }
