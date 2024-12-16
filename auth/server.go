@@ -19,12 +19,14 @@ import (
 )
 
 type Server struct {
+	Manager
 	*sasl.Server
 }
 
 // NewServer creates a new Server.
 func NewServer() *Server {
 	return &Server{
-		Server: sasl.NewServer(),
+		Manager: NewManager(),
+		Server:  sasl.NewServer(),
 	}
 }
