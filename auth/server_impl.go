@@ -14,6 +14,19 @@
 
 package auth
 
-// Server represents an authenticator server.
-type Server interface {
+import (
+	"github.com/cybergarage/go-sasl/sasl"
+)
+
+type server struct {
+	Manager
+	sasl.Server
+}
+
+// NewServer creates a new Server.
+func NewServer() Server {
+	return &server{
+		Manager: NewManager(),
+		Server:  sasl.NewServer(),
+	}
 }
