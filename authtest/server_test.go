@@ -21,5 +21,5 @@ import (
 )
 
 func TestServer(t *testing.T) {
-	auth.NewServer()
+	auth.NewManager()
 }

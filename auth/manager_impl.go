@@ -26,7 +26,8 @@ type manager struct {
 	certAuthenticator CertificateAuthenticator
 }
 
-func NewServer() Manager {
+// NewManager returns a new manager.
+func NewManager() Manager {
 	return &manager{
 		certAuthenticator: NewDefaultCertificateAuthenticator(),
 		Server:            sasl.NewServer(),
