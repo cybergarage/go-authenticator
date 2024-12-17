@@ -40,7 +40,7 @@ func (mgr *manager) SetCertificateAuthenticator(auth CertificateAuthenticator) {
 }
 
 // VerifyCertificate verifies the client certificate.
-func (mgr *manager) VerifyCertificate(conn Conn, state tls.ConnectionState) (bool, error) {
+func (mgr *manager) VerifyCertificate(conn Conn, state *tls.ConnectionState) (bool, error) {
 	if mgr.certAuthenticator == nil {
 		return false, errors.New("no certificate authenticator")
 	}

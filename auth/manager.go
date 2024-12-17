@@ -41,5 +41,5 @@ type Manager interface {
 	// SetCertificateAuthenticator sets the certificate authenticator.
 	SetCertificateAuthenticator(auth CertificateAuthenticator)
 	// VerifyCertificate verifies the client certificate.
-	VerifyCertificate(conn Conn, state tls.ConnectionState) (bool, error)
+	VerifyCertificate(conn Conn, state *tls.ConnectionState) (bool, error)
 }

@@ -18,15 +18,45 @@ import (
 	"crypto/tls"
 )
 
-type defaultCertificateAuthenticator struct {
+type certificateAuthenticator struct {
+	commonName string
+}
+
+// CertificateAuthenticatorOption is a function to set the certificate authenticator options.
+type CertificateAuthenticatorOption = func(*certificateAuthenticator)
+
+// WithCertificateAuthenticatorCommonName sets the common name.
+func WithCertificateAuthenticatorCommonName(name string) func(*certificateAuthenticator) {
+	return func(ca *certificateAuthenticator) {
+		ca.commonName = name
+	}
 }
 
 // NewDefaultCertificateAuthenticator creates a new defaultTLSAuthenticator.
 func NewDefaultCertificateAuthenticator() CertificateAuthenticator {
-	return &defaultCertificateAuthenticator{}
+	return NewCertificateAuthenticatorWith()
 }
 
-// VerifyTLSential verifies the client credential.
-func (a *defaultCertificateAuthenticator) VerifyCertificate(conn Conn, state tls.ConnectionState) (bool, error) {
-	return true, nil
+// NewCertificateAuthenticator creates a new certificate authenticator.
+func NewCertificateAuthenticatorWith(opts ...CertificateAuthenticatorOption) CertificateAuthenticator {
+	ca := &certificateAuthenticator{
+		commonName: "",
+	}
+	for _, opt := range opts {
+		opt(ca)
+	}
+	return ca
+}
+
+// VerifyCertificate verifies the client certificate.
+func (ca *certificateAuthenticator) VerifyCertificate(conn Conn, state *tls.ConnectionState) (bool, error) {
+	if len(ca.commonName) == 0 {
+		return true, nil
+	}
+	for _, cert := range state.PeerCertificates {
+		if cert.Subject.CommonName == ca.commonName {
+			return true, nil
+		}
+	}
+	return false, nil
 }
