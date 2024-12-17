@@ -19,10 +19,9 @@ import (
 
 	"github.com/cybergarage/go-sasl/sasl"
 	"github.com/cybergarage/go-sasl/sasl/auth"
-	"github.com/cybergarage/go-sasl/sasl/cred"
 )
 
-type CredentialStore = cred.Store
+type CredentialStore = auth.CredentialStore
 
 type Manager interface {
 	// Version returns the version.
@@ -36,9 +35,9 @@ type Manager interface {
 	// SetCredentialStore sets the credential store.
 	SetCredentialStore(store CredentialStore)
 	// CredentialStore returns the credential store.
-	CredentialStore() cred.Store
+	CredentialStore() CredentialStore
 	// VerifyCredential verifies the client credential.
-	VerifyCredential(conn auth.Conn, q cred.Query) (bool, error)
+	VerifyCredential(conn auth.Conn, q auth.Query) (bool, error)
 	// SetCertificateAuthenticator sets the certificate authenticator.
 	SetCertificateAuthenticator(auth CertificateAuthenticator)
 	// VerifyCertificate verifies the client certificate.
