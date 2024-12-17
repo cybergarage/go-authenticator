@@ -26,5 +26,5 @@ type CredentialAuthenticator = auth.CredentialAuthenticator
 // CertificateAuthenticator is the interface for authenticating a client using TLS certificates.
 type CertificateAuthenticator interface {
 	// VerifyCertificate verifies the client certificate.
-	VerifyCertificate(conn Conn, state tls.ConnectionState) (bool, error)
+	VerifyCertificate(conn Conn, state *tls.ConnectionState) (bool, error)
 }
