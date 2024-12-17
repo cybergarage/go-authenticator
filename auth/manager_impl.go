@@ -1,4 +1,4 @@
-// Copyright (C) 2019 The go-sasl Authors. All rights reserved.
+// Copyright (C) 2024 The go-authenticator Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,18 +17,20 @@ package auth
 import (
 	"crypto/tls"
 	"errors"
+
+	"github.com/cybergarage/go-sasl/sasl"
 )
 
 type manager struct {
+	sasl.Server
 	certAuthenticator CertificateAuthenticator
 }
 
-// NewManager returns a new auth manager instance.
-func NewManager() Manager {
-	mgr := &manager{
+func NewServer() Manager {
+	return &manager{
 		certAuthenticator: NewDefaultCertificateAuthenticator(),
+		Server:            sasl.NewServer(),
 	}
-	return mgr
 }
 
 // SetCertificateAuthenticator sets the certificate authenticator.

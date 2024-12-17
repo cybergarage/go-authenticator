@@ -1,4 +1,4 @@
-// Copyright (C) 2019 The go-sasl Authors. All rights reserved.
+// Copyright (C) 2024 The go-authenticator Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,10 +16,29 @@ package auth
 
 import (
 	"crypto/tls"
+
+	"github.com/cybergarage/go-sasl/sasl"
+	"github.com/cybergarage/go-sasl/sasl/auth"
+	"github.com/cybergarage/go-sasl/sasl/cred"
 )
 
-// Manager represents a  auth manager interface.
+type CredentialStore = cred.Store
+
 type Manager interface {
+	// Version returns the version.
+	Version() string
+	// Mechanisms returns the mechanisms.
+	Mechanisms() []sasl.Mechanism
+	// Mechanism returns a mechanism by name.
+	Mechanism(name string) (sasl.Mechanism, error)
+	// SetCredentialAuthenticator sets the credential authenticator.
+	SetCredentialAuthenticator(auth CredentialAuthenticator)
+	// SetCredentialStore sets the credential store.
+	SetCredentialStore(store CredentialStore)
+	// CredentialStore returns the credential store.
+	CredentialStore() cred.Store
+	// VerifyCredential verifies the client credential.
+	VerifyCredential(conn auth.Conn, q cred.Query) (bool, error)
 	// SetCertificateAuthenticator sets the certificate authenticator.
 	SetCertificateAuthenticator(auth CertificateAuthenticator)
 	// VerifyCertificate verifies the client certificate.
