@@ -4,3 +4,5 @@ github.com/cybergarage/go-sasl v1.2.2-0.20241216151043-16d56cdb60c3 h1:tt4Ez39zc
 github.com/cybergarage/go-sasl v1.2.2-0.20241216151043-16d56cdb60c3/go.mod h1:IrVfwO6JkYw/bpOJV6HIc5nBe+DReYOOFw5uFCO7GnU=
 github.com/cybergarage/go-sasl v1.2.2-0.20241217142442-c0d6559e6b29 h1:NXpFWvxDwww40B86rEOtpmzPQPiTinuv2Ko0kEZDuG4=
 github.com/cybergarage/go-sasl v1.2.2-0.20241217142442-c0d6559e6b29/go.mod h1:IrVfwO6JkYw/bpOJV6HIc5nBe+DReYOOFw5uFCO7GnU=
+github.com/cybergarage/go-sasl v1.2.2-0.20241218142740-579770f18b11 h1:cvtA81IIlzs2NCOSoI1EPElqiw5i3BU6Mn2CTfaJsnM=
+github.com/cybergarage/go-sasl v1.2.2-0.20241218142740-579770f18b11/go.mod h1:IrVfwO6JkYw/bpOJV6HIc5nBe+DReYOOFw5uFCO7GnU=
