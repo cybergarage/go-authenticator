@@ -21,6 +21,7 @@ import (
 	"github.com/cybergarage/go-sasl/sasl/auth"
 )
 
+// CredentialAuthenticator is the credential authenticator.
 type CredentialStore = auth.CredentialStore
 
 type Manager interface {
