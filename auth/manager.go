@@ -15,8 +15,7 @@
 package auth
 
 import (
-	"crypto/tls"
-
+	"github.com/cybergarage/go-authenticator/auth/tls"
 	"github.com/cybergarage/go-sasl/sasl"
 	"github.com/cybergarage/go-sasl/sasl/auth"
 )
@@ -42,5 +41,5 @@ type Manager interface {
 	// SetCertificateAuthenticator sets the certificate authenticator.
 	SetCertificateAuthenticator(auth CertificateAuthenticator)
 	// VerifyCertificate verifies the client certificate.
-	VerifyCertificate(conn Conn, state *tls.ConnectionState) (bool, error)
+	VerifyCertificate(conn tls.Conn) (bool, error)
 }

@@ -15,7 +15,7 @@
 package auth
 
 import (
-	"crypto/tls"
+	"github.com/cybergarage/go-authenticator/auth/tls"
 )
 
 type certificateAuthenticator struct {
@@ -49,10 +49,11 @@ func NewCertificateAuthenticatorWith(opts ...CertificateAuthenticatorOption) Cer
 }
 
 // VerifyCertificate verifies the client certificate.
-func (ca *certificateAuthenticator) VerifyCertificate(conn Conn, state *tls.ConnectionState) (bool, error) {
+func (ca *certificateAuthenticator) VerifyCertificate(conn tls.Conn) (bool, error) {
 	if len(ca.commonName) == 0 {
 		return true, nil
 	}
+	state := conn.ConnectionState()
 	for _, cert := range state.PeerCertificates {
 		if cert.Subject.CommonName == ca.commonName {
 			return true, nil
