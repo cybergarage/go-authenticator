@@ -15,8 +15,7 @@
 package auth
 
 import (
-	"crypto/tls"
-
+	"github.com/cybergarage/go-authenticator/auth/tls"
 	"github.com/cybergarage/go-sasl/sasl"
 )
 
@@ -39,9 +38,9 @@ func (mgr *manager) SetCertificateAuthenticator(auth CertificateAuthenticator) {
 }
 
 // VerifyCertificate verifies the client certificate. If the certificate authenticator is not set, it returns true.
-func (mgr *manager) VerifyCertificate(conn Conn, state *tls.ConnectionState) (bool, error) {
+func (mgr *manager) VerifyCertificate(conn tls.Conn) (bool, error) {
 	if mgr.certAuthenticator == nil {
 		return true, nil
 	}
-	return mgr.certAuthenticator.VerifyCertificate(conn, state)
+	return mgr.certAuthenticator.VerifyCertificate(conn)
 }

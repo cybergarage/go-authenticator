@@ -1,4 +1,4 @@
-// Copyright (C) 2019 The go-sasl Authors. All rights reserved.
+// Copyright (C) 2024 The go-authenticator Authors. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,18 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package auth
+package tls
 
 import (
-	"github.com/cybergarage/go-authenticator/auth/tls"
-	"github.com/cybergarage/go-sasl/sasl/auth"
+	"crypto/tls"
 )
 
-// CredentialAuthenticator is the interface for authenticating a client using credential.
-type CredentialAuthenticator = auth.CredentialAuthenticator
-
-// CertificateAuthenticator is the interface for authenticating a client using TLS certificates.
-type CertificateAuthenticator interface {
-	// VerifyCertificate verifies the client certificate.
-	VerifyCertificate(conn tls.Conn) (bool, error)
+// Conn represents a connection interface.
+type Conn interface {
+	ConnectionState() tls.ConnectionState
 }
