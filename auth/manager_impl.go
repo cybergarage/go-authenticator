@@ -27,7 +27,7 @@ type manager struct {
 // NewManager returns a new manager.
 func NewManager() Manager {
 	return &manager{
-		certAuthenticator: NewDefaultCertificateAuthenticator(),
+		certAuthenticator: nil,
 		Server:            sasl.NewServer(),
 	}
 }
