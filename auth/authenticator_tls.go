@@ -15,48 +15,53 @@
 package auth
 
 import (
+	"regexp"
+
 	"github.com/cybergarage/go-authenticator/auth/tls"
 )
 
 type certificateAuthenticator struct {
-	commonName string
+	commonNameRegexp []*regexp.Regexp
 }
 
 // CertificateAuthenticatorOption is a function to set the certificate authenticator options.
-type CertificateAuthenticatorOption = func(*certificateAuthenticator)
+type CertificateAuthenticatorOption = func(*certificateAuthenticator) error
 
 // WithCertificateAuthenticatorCommonName sets the common name.
-func WithCertificateAuthenticatorCommonName(name string) func(*certificateAuthenticator) {
-	return func(ca *certificateAuthenticator) {
-		ca.commonName = name
+func WithCertificateAuthenticatorCommonNameRegexp(regexps ...string) CertificateAuthenticatorOption {
+	return func(ca *certificateAuthenticator) error {
+		for _, re := range regexps {
+			r, err := regexp.Compile(re)
+			if err != nil {
+				return err
+			}
+			ca.commonNameRegexp = append(ca.commonNameRegexp, r)
+		}
+		return nil
 	}
 }
 
-// NewDefaultCertificateAuthenticator creates a new defaultTLSAuthenticator.
-func NewDefaultCertificateAuthenticator() CertificateAuthenticator {
-	return NewCertificateAuthenticatorWith()
-}
-
-// NewCertificateAuthenticator creates a new certificate authenticator.
-func NewCertificateAuthenticatorWith(opts ...CertificateAuthenticatorOption) CertificateAuthenticator {
+// NewCertificateAuthenticator returns a new certificate authenticator with the options.
+func NewCertificateAuthenticator(opts ...CertificateAuthenticatorOption) (CertificateAuthenticator, error) {
 	ca := &certificateAuthenticator{
-		commonName: "",
+		commonNameRegexp: []*regexp.Regexp{},
 	}
 	for _, opt := range opts {
-		opt(ca)
+		if err := opt(ca); err != nil {
+			return nil, err
+		}
 	}
-	return ca
+	return ca, nil
 }
 
 // VerifyCertificate verifies the client certificate.
 func (ca *certificateAuthenticator) VerifyCertificate(conn tls.Conn) (bool, error) {
-	if len(ca.commonName) == 0 {
-		return true, nil
-	}
 	state := conn.ConnectionState()
 	for _, cert := range state.PeerCertificates {
-		if cert.Subject.CommonName == ca.commonName {
-			return true, nil
+		for _, re := range ca.commonNameRegexp {
+			if re.MatchString(cert.Subject.CommonName) {
+				return true, nil
+			}
 		}
 	}
 	return false, nil
