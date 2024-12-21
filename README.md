@@ -7,11 +7,18 @@
  [![codecov](https://codecov.io/gh/cybergarage/go-authenticator/graph/badge.svg?token=OCU5V0H3OX)](https://codecov.io/gh/cybergarage/go-authenticator)
 
 
-The `go-authenticator` is a open source framework for authenticating users in Go applications. It supports multiple authentication methods, including user and password authentication, SASL (Simple Authentication and Security Layer) authentication, and certificate authentication.
+The `go-authenticator` is an open-source framework for user authentication in Go applications. It supports multiple authentication methods, including username and password authentication, SASL (Simple Authentication and Security Layer) authentication, and certificate-based authentication.
+
 
 ![](doc/img/framework.png)
 
-The `go-authenticator` framework is designed to be flexible and extensible, allowing you to easily integrate it into your existing applications. 
+The `go-authenticator` framework is designed to be flexible and extensible, making it easy to integrate into existing applications. Its goal is to provide robust authentication functionality through a unified interface. The framework is actively used by the following projects:
+
+- [PuzzleDB](https://github.com/cybergarage/puzzledb-go)
+- [go-mysql](https://github.com/cybergarage/go-mysql)
+- [go-postgresql](https://github.com/cybergarage/go-postgresql)
+- [go-redis](https://github.com/cybergarage/go-redis)
+- [go-mongo](https://github.com/cybergarage/go-mongo)
 
 ## Features
 
