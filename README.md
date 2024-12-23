@@ -33,30 +33,32 @@ The `go-authenticator` framework includes the `go-sasl` package, which provides 
 
 #### Examples
 
+To integrate the SASL authentication into your application, refer to the example below.
+
 - [go-mongo](https://github.com/cybergarage/go-mongo)
   - [BaseCommandExecutor::ExecuteCommand()](https://github.com/cybergarage/go-mongo/blob/master/mongo/command_base_executor.go)
 
 
-## Certificate Authentication
+### Certificate Authentication
 
 This section explains how to authenticate users based on the certificate of a TLS connection using the `CredentialAuthenticator` interface from the `go-authenticator` framework.
 
-### CredentialAuthenticator Overview
+#### CertificateAuthenticator Overview
 
-The `CredentialAuthenticator` is a simple interface that verifies users by examining the certificate of the TLS connection.
+The `CertificateAuthenticator` is a simple interface that verifies users by examining the certificate of the TLS connection.
 
-#### Interface Definition
+##### Interface Definition
 ```go
 type CertificateAuthenticator interface {
 	VerifyCertificate(conn tls.Conn) (bool, error)
 }
 ```
 
-#### Creating a CertificateAuthenticator
+##### Creating a CertificateAuthenticator
 
 To create an instance of `CertificateAuthenticator`, use the `NewCertificateAuthenticator()` function provided by `go-authenticator`. This instance authenticates users based on the common names (CN) found in the TLS connection certificate.
 
-#### Enabling Certificate Authentication
+##### Enabling Certificate Authentication
 
 To enable certificate authentication, set the `CertificateAuthenticator` instance to the manager by using the `SetCertificateAuthenticator` method.
 
@@ -73,7 +75,9 @@ mgr.SetCertificateAuthenticator(ca)
 
 By following these steps, you can easily authenticate users through TLS certificate verification, enhancing the security of your application.
 
-### Examples
+#### Examples
+
+To integrate the certificate authentication into your application, refer to the example below.
 
 - [go-mongo](https://github.com/cybergarage/go-mongo)
   - [Server::serve()](https://github.com/cybergarage/go-mongo/blob/master/mongo/server.go)
