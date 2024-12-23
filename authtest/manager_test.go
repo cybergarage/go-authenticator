@@ -20,6 +20,6 @@ import (
 	"github.com/cybergarage/go-authenticator/auth"
 )
 
-func TestServer(t *testing.T) {
+func TestManager(t *testing.T) {
 	auth.NewManager()
 }
