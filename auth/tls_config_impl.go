@@ -30,8 +30,8 @@ type tlsConfig struct {
 	tlsConfig      *tls.Config
 }
 
-// NewTLSConf returns a new TLS configuration.
-func NewTLSConf() TLSConfig {
+// NewTLSConfig returns a new TLS configuration.
+func NewTLSConfig() TLSConfig {
 	return &tlsConfig{
 		ClientAuthType: tls.RequireAndVerifyClientCert,
 		ServerCert:     []byte{},
