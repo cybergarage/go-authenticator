@@ -18,8 +18,8 @@ import (
 	"crypto/tls"
 )
 
-// TLSConfig represets a TLS configuration interface.
-type TLSConfig interface {
+// TLSConf represents a TLS configuration interface.
+type TLSConf interface {
 	// SetTLSEnabled sets a TLS enabled flag.
 	SetTLSEnabled(enabled bool)
 	// IsEnabled returns true if the TLS is enabled.
