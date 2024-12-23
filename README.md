@@ -25,6 +25,27 @@ The `go-authenticator` framework provides the following features:
 
 ### User Authentication
 
+This section explains how to authenticate users based on credentials using the `CredentialAuthenticator` interface from the `go-authenticator` framework.
+
+#### CredentialAuthenticator Overview
+
+The `CredentialAuthenticator` is a simple interface that verifies users based on their credentials. The `VerifyCredential` method takes a connection, a query, and a credential as arguments and returns a boolean value indicating whether the user is authenticated.
+
+##### Interface Definition
+```go
+type CredentialAuthenticator interface {
+	VerifyCredential(conn Conn, q Query, cred Credential) (bool, error)
+}
+```
+
+##### Creating a CredentialAuthenticator
+
+The `go-authenticator` framework provides a default implementation of the `CredentialAuthenticator` interface called `DefaultCredentialAuthenticator`. This implementation authenticates users based on the user and password provided in the credential.
+
+
+`NewCredentialAuthenticator` function that creates an instance of `CredentialAuthenticator`. This instance authenticates users based on the user and password provided in the credential.
+
+
 ### SASL Authentication
 
 The `go-authenticator` framework includes the `go-sasl` package, which provides a set of SASL (Simple Authentication and Security Layer) mechanisms that can be used to authenticate users in Go applications. For information on how to use the SASL API, see the go-sasl documentation.
