@@ -24,8 +24,6 @@ import (
 type CredentialStore = auth.CredentialStore
 
 type Manager interface {
-	// Version returns the version.
-	Version() string
 	// Mechanisms returns the mechanisms.
 	Mechanisms() []sasl.Mechanism
 	// Mechanism returns a mechanism by name.
