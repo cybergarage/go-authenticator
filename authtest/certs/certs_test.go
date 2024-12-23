@@ -17,7 +17,7 @@ package certs
 import (
 	"testing"
 
-	"github.com/cybergarage/go-mongo/mongo"
+	"github.com/cybergarage/go-authenticator/auth"
 )
 
 const (
@@ -27,7 +27,7 @@ const (
 )
 
 func TestCerts(t *testing.T) {
-	conf := mongo.NewTLSConf()
+	conf := auth.NewCertConfig()
 	conf.SetServerCertFile(certFile)
 	conf.SetServerKeyFile(keyFile)
 	conf.SetRootCertFiles(caCertFile)
