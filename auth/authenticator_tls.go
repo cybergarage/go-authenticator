@@ -28,7 +28,7 @@ type certificateAuthenticator struct {
 type CertificateAuthenticatorOption = func(*certificateAuthenticator) error
 
 // WithCertificateAuthenticatorCommonName sets the common name.
-func WithCertificateAuthenticatorCommonNameRegexp(regexps ...string) CertificateAuthenticatorOption {
+func WithCommonNameRegexp(regexps ...string) CertificateAuthenticatorOption {
 	return func(ca *certificateAuthenticator) error {
 		for _, re := range regexps {
 			r, err := regexp.Compile(re)
