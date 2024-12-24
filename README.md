@@ -93,7 +93,7 @@ To enable certificate authentication, set the `CertificateAuthenticator` instanc
 ```go
 mgr := auth.NewManager()
 ca, err := auth.NewCertificateAuthenticator(
-    auth.WithCertificateAuthenticatorCommonNameRegexp("localhost"))
+    auth.WithCommonNameRegexp("localhost"))
 if err != nil {
     t.Error(err)
     return
@@ -109,3 +109,5 @@ To integrate the certificate authentication into your application, refer to the 
 
 - [go-mongo](https://github.com/cybergarage/go-mongo)
   - [Server::serve()](https://github.com/cybergarage/go-mongo/blob/master/mongo/server.go)
+- [go-redis](https://github.com/cybergarage/go-redis)
+  - [Server::tlsServe()](https://github.com/cybergarage/go-redis/redis/server_impl.go)
