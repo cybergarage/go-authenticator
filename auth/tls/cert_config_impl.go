@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package auth
+package tls
 
 import (
 	"crypto/tls"
@@ -20,8 +20,8 @@ import (
 	"os"
 )
 
-// tlsConfig represents a TLS configuration.
-type tlsConfig struct {
+// certConfig represents a TLS configuration.
+type certConfig struct {
 	ClientAuthType tls.ClientAuthType
 	ServerCert     []byte
 	ServerKey      []byte
@@ -32,7 +32,7 @@ type tlsConfig struct {
 
 // NewCertConfig returns a new TLS configuration.
 func NewCertConfig() CertConfig {
-	return &tlsConfig{
+	return &certConfig{
 		ClientAuthType: tls.RequireAndVerifyClientCert,
 		ServerCert:     []byte{},
 		ServerKey:      []byte{},
@@ -43,24 +43,24 @@ func NewCertConfig() CertConfig {
 }
 
 // SetTLSEnabled sets a TLS enabled flag.
-func (config *tlsConfig) SetTLSEnabled(enabled bool) {
+func (config *certConfig) SetTLSEnabled(enabled bool) {
 	config.enabled = enabled
 }
 
 // IsEnabled returns true if the TLS is enabled.
-func (config *tlsConfig) IsTLSEnabled() bool {
+func (config *certConfig) IsTLSEnabled() bool {
 	return config.enabled
 }
 
 // SetClientAuthType sets a client authentication type.
-func (config *tlsConfig) SetClientAuthType(authType tls.ClientAuthType) {
+func (config *certConfig) SetClientAuthType(authType tls.ClientAuthType) {
 	config.ClientAuthType = authType
 	config.tlsConfig = nil
 	config.SetTLSEnabled(true)
 }
 
 // SetServerKeyFile sets a SSL server key file.
-func (config *tlsConfig) SetServerKeyFile(file string) error {
+func (config *certConfig) SetServerKeyFile(file string) error {
 	key, err := os.ReadFile(file)
 	if err != nil {
 		return err
@@ -70,7 +70,7 @@ func (config *tlsConfig) SetServerKeyFile(file string) error {
 }
 
 // SetServerCertFile sets a SSL server certificate file.
-func (config *tlsConfig) SetServerCertFile(file string) error {
+func (config *certConfig) SetServerCertFile(file string) error {
 	cert, err := os.ReadFile(file)
 	if err != nil {
 		return err
@@ -80,7 +80,7 @@ func (config *tlsConfig) SetServerCertFile(file string) error {
 }
 
 // SetRootCertFile sets a SSL root certificates.
-func (config *tlsConfig) SetRootCertFiles(files ...string) error {
+func (config *certConfig) SetRootCertFiles(files ...string) error {
 	certs := make([][]byte, len(files))
 	for n, file := range files {
 		cert, err := os.ReadFile(file)
@@ -94,34 +94,34 @@ func (config *tlsConfig) SetRootCertFiles(files ...string) error {
 }
 
 // SetServerKey sets a SSL server key.
-func (config *tlsConfig) SetServerKey(key []byte) {
+func (config *certConfig) SetServerKey(key []byte) {
 	config.ServerKey = key
 	config.tlsConfig = nil
 	config.SetTLSEnabled(true)
 }
 
 // SetServerCert sets a SSL server certificate.
-func (config *tlsConfig) SetServerCert(cert []byte) {
+func (config *certConfig) SetServerCert(cert []byte) {
 	config.ServerCert = cert
 	config.tlsConfig = nil
 	config.SetTLSEnabled(true)
 }
 
 // SetRootCerts sets a SSL root certificates.
-func (config *tlsConfig) SetRootCerts(certs ...[]byte) {
+func (config *certConfig) SetRootCerts(certs ...[]byte) {
 	config.RootCerts = certs
 	config.tlsConfig = nil
 	config.SetTLSEnabled(true)
 }
 
 // SetTLSConfig sets a TLS configuration.
-func (config *tlsConfig) SetTLSConfig(tlsConfig *tls.Config) {
+func (config *certConfig) SetTLSConfig(tlsConfig *tls.Config) {
 	config.tlsConfig = tlsConfig
 	config.SetTLSEnabled(true)
 }
 
 // TLSConfig returns a TLS configuration from the configuration.
-func (config *tlsConfig) TLSConfig() (*tls.Config, error) {
+func (config *certConfig) TLSConfig() (*tls.Config, error) {
 	if !config.IsTLSEnabled() {
 		return nil, nil
 	}
