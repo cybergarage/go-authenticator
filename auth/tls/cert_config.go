@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package auth
+package tls
 
 import (
 	"crypto/tls"
@@ -20,10 +20,6 @@ import (
 
 // CertConfig represents a TLS configuration interface.
 type CertConfig interface {
-	// SetTLSEnabled sets a TLS enabled flag.
-	SetTLSEnabled(enabled bool)
-	// IsEnabled returns true if the TLS is enabled.
-	IsTLSEnabled() bool
 	// SetClientAuthType sets a client authentication type.
 	SetClientAuthType(authType tls.ClientAuthType)
 	// SetServerKeyFile sets a SSL server key file.
