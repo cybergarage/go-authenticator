@@ -2,3 +2,5 @@ github.com/cybergarage/go-safecast v1.2.5 h1:ZDiKmdsE15RTKETRXKAKbYTDIhAzNONwJEf
 github.com/cybergarage/go-safecast v1.2.5/go.mod h1:fw2lE/5DIOjmyPj5kx0aYZSAL2bSFoh/Zith5TWVTz8=
 github.com/cybergarage/go-sasl v1.2.2-0.20241218142740-579770f18b11 h1:cvtA81IIlzs2NCOSoI1EPElqiw5i3BU6Mn2CTfaJsnM=
 github.com/cybergarage/go-sasl v1.2.2-0.20241218142740-579770f18b11/go.mod h1:IrVfwO6JkYw/bpOJV6HIc5nBe+DReYOOFw5uFCO7GnU=
+github.com/cybergarage/go-sasl v1.2.2-0.20241224175317-47b334e0ecdf h1:zzdk8FNeSkyXft2wA/20vR3tjgvbmjdiy/16RRlwmrk=
+github.com/cybergarage/go-sasl v1.2.2-0.20241224175317-47b334e0ecdf/go.mod h1:IrVfwO6JkYw/bpOJV6HIc5nBe+DReYOOFw5uFCO7GnU=
