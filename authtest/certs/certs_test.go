@@ -17,7 +17,7 @@ package certs
 import (
 	"testing"
 
-	"github.com/cybergarage/go-authenticator/auth"
+	"github.com/cybergarage/go-authenticator/auth/tls"
 )
 
 const (
@@ -27,7 +27,7 @@ const (
 )
 
 func TestCerts(t *testing.T) {
-	conf := auth.NewCertConfig()
+	conf := tls.NewCertConfig()
 	conf.SetServerCertFile(certFile)
 	conf.SetServerKeyFile(keyFile)
 	conf.SetRootCertFiles(caCertFile)
