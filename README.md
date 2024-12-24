@@ -107,7 +107,9 @@ By following these steps, you can easily authenticate users through TLS certific
 
 To integrate the certificate authentication into your application, refer to the example below.
 
+- [go-mysql](https://github.com/cybergarage/go-mysql)
+  - [Server::receive](https://github.com/cybergarage/go-mysql/blob/main/mysql/protocol/server.go)
 - [go-mongo](https://github.com/cybergarage/go-mongo)
   - [Server::serve()](https://github.com/cybergarage/go-mongo/blob/master/mongo/server.go)
 - [go-redis](https://github.com/cybergarage/go-redis)
-  - [Server::tlsServe()](https://github.com/cybergarage/go-redis/redis/server_impl.go)
+  - [Server::tlsServe()](https://github.com/cybergarage/go-redis/blob/main/redis/server_impl.go)
