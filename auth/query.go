@@ -32,27 +32,22 @@ func NewQuery(opts ...QueryOptionFn) Query {
 	return auth.NewQuery(opts...)
 }
 
-// WithQueryGroup returns an option to set the group.
-func WithQueryGroup(group string) QueryOptionFn {
+// WithGroup returns an option to set the group.
+func WithGroup(group string) QueryOptionFn {
 	return auth.WithQueryGroup(group)
 }
 
-// WithQueryUsername returns an option to set the username.
-func WithQueryUsername(username string) QueryOptionFn {
+// WithUsername returns an option to set the username.
+func WithUsername(username string) QueryOptionFn {
 	return auth.WithQueryUsername(username)
 }
 
-// WithQueryPassword returns an option to set the password.
-func WithQueryPassword(password string) QueryOptionFn {
+// WithPassword returns an option to set the password.
+func WithPassword(password string) QueryOptionFn {
 	return auth.WithQueryPassword(password)
 }
 
-// WithQueryMechanism returns an option to set the mechanism.
-func WithQueryMechanism(mech string) QueryOptionFn {
+// WithMechanism returns an option to set the mechanism.
+func WithMechanism(mech string) QueryOptionFn {
 	return auth.WithQueryMechanism(mech)
-}
-
-// WithQueryOption returns an option to set the options.
-func WithQueryOption(opt any) QueryOptionFn {
-	return auth.WithQueryOption(opt)
 }
