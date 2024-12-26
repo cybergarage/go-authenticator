@@ -52,6 +52,12 @@ The `go-authenticator` framework provides a default implementation of the `Crede
 
 `NewCredentialAuthenticator` function that creates an instance of `CredentialAuthenticator`. This instance authenticates users based on the user and password provided in the credential.
 
+#### Examples
+
+To integrate the user authentication function into your application, refer to the example below.
+
+- [go-redis](https://github.com/cybergarage/go-redis)
+  - [Server::Auth()](https://github.com/cybergarage/go-redis/blob/main/redis/server_auth.go)
 
 ### SASL Authentication
 
@@ -105,7 +111,7 @@ By following these steps, you can easily authenticate users through TLS certific
 
 #### Examples
 
-To integrate the certificate authentication into your application, refer to the example below.
+To integrate the certificate authentication function into your application, refer to the example below.
 
 - [go-mysql](https://github.com/cybergarage/go-mysql)
   - [Server::receive](https://github.com/cybergarage/go-mysql/blob/main/mysql/protocol/server.go)
