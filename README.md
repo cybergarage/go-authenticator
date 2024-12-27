@@ -30,32 +30,63 @@ The `go-authenticator` framework provides the following features:
 
 ## Getting Started
 
-### User Authentication
+The `go-authenticator` provides a authentication manager that manages the authentication process. The manager can be configured with different authentication methods, such as credential authentication, SASL authentication, and certificate authentication.
+
+```go
+type Manager interface {
+	// SetCredentialAuthenticator sets the credential authenticator.
+	SetCredentialAuthenticator(auth CredentialAuthenticator)
+	// VerifyCredential verifies the client credential.
+	VerifyCredential(conn auth.Conn, q auth.Query) (bool, error)
+	// SetCredentialStore sets the credential store.
+	SetCredentialStore(store CredentialStore)
+	// CredentialStore returns the credential store.
+	CredentialStore() CredentialStore
+	// SetCertificateAuthenticator sets the certificate authenticator.
+	SetCertificateAuthenticator(auth CertificateAuthenticator)
+	// VerifyCertificate verifies the client certificate.
+	VerifyCertificate(conn tls.Conn) (bool, error)
+	// Mechanisms returns the mechanisms.
+	Mechanisms() []sasl.Mechanism
+	// Mechanism returns a mechanism by name.
+	Mechanism(name string) (sasl.Mechanism, error)
+}
+```
+
+### Credential Authentication
 
 This section explains how to authenticate users based on credentials using the `CredentialAuthenticator` interface from the `go-authenticator` framework.
 
-#### CredentialAuthenticator Overview
+#### CredentialStore
 
-The `CredentialAuthenticator` is a simple interface that verifies users based on their credentials. The `VerifyCredential` method takes a connection, a query, and a credential as arguments and returns a boolean value indicating whether the user is authenticated.
+The `go-authenticator` has a default credential authenticator which uses the CredentialStore. The CredentialStore to be used is set with the `Manager::SetCredentialStore`.
 
-##### Interface Definition
+```go
+type CredentialStore interface {
+	LookupCredential(q Query) (Credential, bool, error)
+}
+```
+
+The `CredentialStore::LookupCredential` should return true with the queried credential if it is found or false. Detailed information about the query failure can be returned with an error, while security information can be NULL as it may lead to vulnerabilities.
+
+#### CredentialAuthenticator
+
+The `go-authenticator` is configured with a standard authenticator, but the user can set their own authenticator.　The `CredentialAuthenticator` is a simple interface that verifies users based on their credentials. The `VerifyCredential` method takes a connection, a query, and a credential as arguments and returns a boolean value indicating whether the user is authenticated.
+
 ```go
 type CredentialAuthenticator interface {
 	VerifyCredential(conn Conn, q Query, cred Credential) (bool, error)
 }
 ```
 
-##### Creating a CredentialAuthenticator
-
-The `go-authenticator` framework provides a default implementation of the `CredentialAuthenticator` interface called `DefaultCredentialAuthenticator`. This implementation authenticates users based on the user and password provided in the credential.
-
-
-`NewCredentialAuthenticator` function that creates an instance of `CredentialAuthenticator`. This instance authenticates users based on the user and password provided in the credential.
+The `VerifyCredential` should, as a minimum, return true or false if the queried credential is correct. Detailed information about the query failure can be returned with an error, but the 
 
 #### Examples
 
 To integrate the user authentication function into your application, refer to the example below.
 
+- [go-postgresql](https://github.com/cybergarage/go-postgresql)
+  - [Server::receive()](https://github.com/cybergarage/go-postgresql/blob/master/postgresql/protocol/server_impl.go)
 - [go-redis](https://github.com/cybergarage/go-redis)
   - [Server::Auth()](https://github.com/cybergarage/go-redis/blob/main/redis/server_auth.go)
 
@@ -77,11 +108,10 @@ To integrate the SASL authentication into your application, refer to the example
 
 This section explains how to authenticate users based on the certificate of a TLS connection using the `CredentialAuthenticator` interface from the `go-authenticator` framework.
 
-#### CertificateAuthenticator Overview
+#### CertificateAuthenticator
 
 The `CertificateAuthenticator` is a simple interface that verifies users by examining the certificate of the TLS connection.
 
-##### Interface Definition
 ```go
 type CertificateAuthenticator interface {
 	VerifyCertificate(conn tls.Conn) (bool, error)
