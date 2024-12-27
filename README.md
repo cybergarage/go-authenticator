@@ -2,6 +2,8 @@
 
 `go-authenticator` is an open-source framework for user authentication in Go applications. It supports multiple authentication methods, including username and password authentication, SASL (Simple Authentication and Security Layer) authentication, and certificate-based authentication.
 
+![](docs/img/framework.png)
+
 The `go-authenticator` framework is designed to be flexible and extensible, allowing seamless integration into existing applications. Its goal is to provide robust authentication functionality through a unified interface. The framework is actively used by the following projects:
 
 - [PuzzleDB](https://github.com/cybergarage/puzzledb-go)
