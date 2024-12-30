@@ -18,4 +18,5 @@ import (
 	"github.com/cybergarage/go-sasl/sasl/auth"
 )
 
+// Conn represents a connection interface.
 type Conn = auth.Conn
