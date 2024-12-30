@@ -23,11 +23,14 @@ import (
 // CredentialAuthenticator is the credential authenticator.
 type CredentialStore = auth.CredentialStore
 
+// Mechanism represents a SASL mechanism.
+type Mechanism = sasl.Mechanism
+
 type Manager interface {
 	// Mechanisms returns the mechanisms.
-	Mechanisms() []sasl.Mechanism
+	Mechanisms() []Mechanism
 	// Mechanism returns a mechanism by name.
-	Mechanism(name string) (sasl.Mechanism, error)
+	Mechanism(name string) (Mechanism, error)
 	// SetCredentialAuthenticator sets the credential authenticator.
 	SetCredentialAuthenticator(auth CredentialAuthenticator)
 	// SetCredentialStore sets the credential store.
@@ -35,7 +38,7 @@ type Manager interface {
 	// CredentialStore returns the credential store.
 	CredentialStore() CredentialStore
 	// VerifyCredential verifies the client credential.
-	VerifyCredential(conn auth.Conn, q auth.Query) (bool, error)
+	VerifyCredential(conn Conn, q Query) (bool, error)
 	// SetCertificateAuthenticator sets the certificate authenticator.
 	SetCertificateAuthenticator(auth CertificateAuthenticator)
 	// VerifyCertificate verifies the client certificate.
