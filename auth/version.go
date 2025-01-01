@@ -15,5 +15,5 @@
 package auth
 
 const (
-	Version = "v1.0.2"
+	Version = "v1.0.3"
 )
