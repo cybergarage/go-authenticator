@@ -27,6 +27,9 @@ type QueryOptionFn = auth.QueryOptionFn
 // QueryOption represents an option for a query.
 type QueryOption = auth.QueryOption
 
+// EncryptFunc represents an encrypt function.
+type EncryptFunc = auth.EncryptFunc
+
 // NewQuery returns a new query with options.
 func NewQuery(opts ...QueryOptionFn) Query {
 	return auth.NewQuery(opts...)
@@ -50,6 +53,11 @@ func WithQueryPassword(password string) QueryOptionFn {
 // WithQueryMechanism returns an option to set the mechanism.
 func WithQueryMechanism(mech string) QueryOptionFn {
 	return auth.WithQueryMechanism(mech)
+}
+
+// WithQueryEncryptFunc returns an option to set the encrypt function.
+func WithQueryEncryptFunc(encryptFunc EncryptFunc) QueryOptionFn {
+	return auth.WithQueryEncryptFunc(encryptFunc)
 }
 
 // WithQueryOptions returns an option to set the options.
