@@ -51,3 +51,8 @@ func WithQueryPassword(password string) QueryOptionFn {
 func WithQueryMechanism(mech string) QueryOptionFn {
 	return auth.WithQueryMechanism(mech)
 }
+
+// WithQueryOptions returns an option to set the options.
+func WithQueryOptions(opts ...any) QueryOptionFn {
+	return auth.WithQueryOptions(opts)
+}
