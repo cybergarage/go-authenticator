@@ -31,7 +31,7 @@ type QueryOption = auth.QueryOption
 type EncryptFunc = auth.EncryptFunc
 
 // NewQuery returns a new query with options.
-func NewQuery(opts ...QueryOptionFn) Query {
+func NewQuery(opts ...QueryOptionFn) (Query, error) {
 	return auth.NewQuery(opts...)
 }
 
