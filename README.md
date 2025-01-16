@@ -12,11 +12,14 @@
 
 The `go-authenticator` framework is designed to be flexible and extensible, allowing seamless integration into existing applications. Its goal is to provide robust authentication functionality through a unified interface. The framework is actively used by the following projects:
 
-- [PuzzleDB](https://github.com/cybergarage/puzzledb-go)
-- [go-mysql](https://github.com/cybergarage/go-mysql)
-- [go-postgresql](https://github.com/cybergarage/go-postgresql)
-- [go-redis](https://github.com/cybergarage/go-redis)
-- [go-mongo](https://github.com/cybergarage/go-mongo)
+- [PuzzleDB](https://github.com/cybergarage/puzzledb-go) ![](https://img.shields.io/github/v/tag/cybergarage/puzzledb-go)
+- [go-mysql](https://github.com/cybergarage/go-mysql) ![](https://img.shields.io/github/v/tag/cybergarage/go-mysql)
+- [go-postgresql](https://github.com/cybergarage/go-postgresql) ![](https://img.shields.io/github/v/tag/cybergarage/go-postgresql)
+- [go-redis](https://github.com/cybergarage/go-redis) ![](https://img.shields.io/github/v/tag/cybergarage/go-redis)
+- [go-mongo](https://github.com/cybergarage/go-mongo) ![](https://img.shields.io/github/v/tag/cybergarage/go-mongo)
+
+
+
 
 ## Features
 
@@ -133,11 +136,11 @@ By following these steps, you can enhance application security through TLS certi
 
 For certificate authentication integration, refer to the examples below:
 
-- [go-postgresql](https://github.com/cybergarage/go-postgresql)
+- [go-postgresql](https://github.com/cybergarage/go-postgresql) ![](https://img.shields.io/github/v/tag/cybergarage/go-postgresql)
   - [Server::receive()](https://github.com/cybergarage/go-postgresql/blob/master/postgresql/protocol/server_impl.go)
-- [go-mysql](https://github.com/cybergarage/go-mysql)
+- [go-mysql](https://github.com/cybergarage/go-mysql) ![](https://img.shields.io/github/v/tag/cybergarage/go-mysql)
   - [Server::receive()](https://github.com/cybergarage/go-mysql/blob/main/mysql/protocol/server.go)
-- [go-mongo](https://github.com/cybergarage/go-mongo)
+- [go-mongo](https://github.com/cybergarage/go-mongo) ![](https://img.shields.io/github/v/tag/cybergarage/go-mongo)
   - [Server::serve()](https://github.com/cybergarage/go-mongo/blob/master/mongo/server.go)
-- [go-redis](https://github.com/cybergarage/go-redis)
+- [go-redis](https://github.com/cybergarage/go-redis) ![](https://img.shields.io/github/v/tag/cybergarage/go-redis)
   - [Server::tlsServe()](https://github.com/cybergarage/go-redis/blob/main/redis/server_impl.go)
