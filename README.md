@@ -19,8 +19,6 @@ The `go-authenticator` framework is designed to be flexible and extensible, allo
 - [go-mongo](https://github.com/cybergarage/go-mongo) ![](https://img.shields.io/github/v/tag/cybergarage/go-mongo)
 
 
-
-
 ## Features
 
 The `go-authenticator` framework offers the following features:
@@ -78,9 +76,11 @@ The `VerifyCredential` method should return `true` or `false` based on credentia
 
 To integrate user authentication into your application, refer to the examples below:
 
-- [go-postgresql](https://github.com/cybergarage/go-postgresql)
+- [go-postgresql](https://github.com/cybergarage/go-postgresql) ![](https://img.shields.io/github/v/tag/cybergarage/go-postgresql)
   - [Server::receive()](https://github.com/cybergarage/go-postgresql/blob/master/postgresql/protocol/server_impl.go)
-- [go-redis](https://github.com/cybergarage/go-redis)
+- [go-mysql](https://github.com/cybergarage/go-mysql) ![](https://img.shields.io/github/v/tag/cybergarage/go-mysql)
+  - [Server::receive()](https://github.com/cybergarage/go-mysql/blob/main/mysql/protocol/server.go)
+- [go-redis](https://github.com/cybergarage/go-redis) ![](https://img.shields.io/github/v/tag/cybergarage/go-redis)
   - [Server::Auth()](https://github.com/cybergarage/go-redis/blob/main/redis/server_auth.go)
 
 ### SASL Authentication
@@ -94,7 +94,7 @@ To integrate user authentication into your application, refer to the examples be
 
 For SASL authentication integration, refer to the examples below:
 
-- [go-mongo](https://github.com/cybergarage/go-mongo)
+- [go-mongo](https://github.com/cybergarage/go-mongo) ![](https://img.shields.io/github/v/tag/cybergarage/go-mongo)
   - [BaseCommandExecutor::ExecuteCommand()](https://github.com/cybergarage/go-mongo/blob/master/mongo/command_base_executor.go)
 
 ### Certificate Authentication
