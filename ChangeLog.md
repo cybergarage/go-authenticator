@@ -1,6 +1,6 @@
 # Changelog  
 
-## v1.0.3 (2025-01-XX)  
+## v1.0.3 (2025-01-16) 
 - Updated Query interface
   - Added setter methods for the query parameters
   - Added the EncryptFunc() method
