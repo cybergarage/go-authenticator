@@ -84,7 +84,8 @@ To integrate user authentication into your application, refer to the examples be
 
 `go-authenticator` includes the `go-sasl` package, providing SASL mechanisms for authentication. For details on using the SASL API, see the `go-sasl` documentation.
 
-- [go-sasl](https://github.com/cybergarage/go-sasl)
+- [go-sasl](https://github.com/cybergarage/go-sasl) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/go-sasl)
+
 
 #### Examples
 
