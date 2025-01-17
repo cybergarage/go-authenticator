@@ -15,18 +15,10 @@
 package auth
 
 import (
-	"github.com/cybergarage/go-authenticator/auth/tls"
 	"github.com/cybergarage/go-sasl/sasl/auth"
 )
 
-// CredentialAuthenticator is the interface for authenticating a client using credential.
-type CredentialAuthenticator = auth.CredentialAuthenticator
-
-// DefaultCredentialAuthenticator is the default credential authenticator.
-type DefaultCredentialAuthenticator = auth.DefaultCredentialAuthenticator
-
-// CertificateAuthenticator is the interface for authenticating a client using TLS certificates.
-type CertificateAuthenticator interface {
-	// VerifyCertificate verifies the client certificate.
-	VerifyCertificate(conn tls.Conn) (bool, error)
+// NewCredentialAuthenticator returns a new credential authenticator.
+func NewCredentialAuthenticator() DefaultCredentialAuthenticator {
+	return auth.NewDefaultCredentialAuthenticator()
 }
