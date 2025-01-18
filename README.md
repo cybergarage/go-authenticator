@@ -6,30 +6,33 @@
  [![Go Report Card](https://img.shields.io/badge/go%20report-A%2B-brightgreen)](https://goreportcard.com/report/github.com/cybergarage/go-authenticator) 
  [![codecov](https://codecov.io/gh/cybergarage/go-authenticator/graph/badge.svg?token=OCU5V0H3OX)](https://codecov.io/gh/cybergarage/go-authenticator)
  
-`go-authenticator` is an open-source framework for user authentication in Go applications. It supports multiple authentication methods, including username and password authentication, SASL (Simple Authentication and Security Layer) authentication, and certificate-based authentication.
+**go-authenticator** is an open-source framework for user authentication in Go applications. It supports multiple authentication methods, including username and password authentication, SASL (Simple Authentication and Security Layer) authentication, and certificate-based authentication.
 
 ![](doc/img/framework.png)
 
-The `go-authenticator` framework is designed to be flexible and extensible, allowing seamless integration into existing applications. Its goal is to provide robust authentication functionality through a unified interface. The framework is actively used by the following projects:
+Built for flexibility and extensibility, [**go-authenticator**](https://github.com/cybergarage/go-authenticator) allows developers to easily integrate custom authentication methods. It provides a unified interface for handling authentication requests and responses and is used as the authentication component in the following projects:
 
-- [PuzzleDB](https://github.com/cybergarage/puzzledb-go) ![](https://img.shields.io/github/v/tag/cybergarage/puzzledb-go)
-- [go-mysql](https://github.com/cybergarage/go-mysql) ![](https://img.shields.io/github/v/tag/cybergarage/go-mysql)
-- [go-postgresql](https://github.com/cybergarage/go-postgresql) ![](https://img.shields.io/github/v/tag/cybergarage/go-postgresql)
-- [go-redis](https://github.com/cybergarage/go-redis) ![](https://img.shields.io/github/v/tag/cybergarage/go-redis)
-- [go-mongo](https://github.com/cybergarage/go-mongo) ![](https://img.shields.io/github/v/tag/cybergarage/go-mongo)
+- [**PuzzleDB**](https://github.com/cybergarage/puzzledb-go) ![](https://img.shields.io/github/v/tag/cybergarage/puzzledb-go)
+- [**go-sqlserver**](https://github.com/cybergarage/go-sqlserver) ![](https://img.shields.io/github/v/tag/cybergarage/go-sqlserver)  
 
+- [**go-mysql**](https://github.com/cybergarage/go-mysql) ![](https://img.shields.io/github/v/tag/cybergarage/go-mysql)
+- [**go-postgresql**](https://github.com/cybergarage/go-postgresql) ![](https://img.shields.io/github/v/tag/cybergarage/go-postgresql)
+- [**go-redis**](https://github.com/cybergarage/go-redis) ![](https://img.shields.io/github/v/tag/cybergarage/go-redis)
+- [**go-mongo**](https://github.com/cybergarage/go-mongo) ![](https://img.shields.io/github/v/tag/cybergarage/go-mongo)
 
 ## Features
 
-The `go-authenticator` framework offers the following features:
+[**go-authenticator**](https://github.com/cybergarage/go-authenticator) is an open-source framework designed to simplify user authentication in Go applications. It supports various authentication methods, including:
 
-- **User Authentication**: Authenticate users using a username and password.
-- **SASL Authentication**: Authenticate users via SASL (Simple Authentication and Security Layer).
-- **Certificate Authentication**: Authenticate users based on the TLS connection certificate.
+- **User Authentication** with username and password  
+- **SASL Authentication** for secure, extensible mechanisms  
+- **Certificate Authentication** via TLS certificates  
+
+[**go-authenticator**](https://github.com/cybergarage/go-authenticator) is a powerful and extensible framework for managing user authentication in Go applications. Its support for multiple authentication methods and seamless integration makes it an excellent choice for building secure, scalable systems.
 
 ## Getting Started
 
-`go-authenticator` provides an authentication manager to handle the authentication process. The manager can be configured with different authentication methods, such as credential authentication, SASL authentication, and certificate authentication.
+**go-authenticator** provides an authentication manager to handle the authentication process. The manager can be configured with different authentication methods, such as credential authentication, SASL authentication, and certificate authentication.
 
 ```go
 type Manager interface {
@@ -50,7 +53,7 @@ This section explains how to authenticate users based on credentials using the `
 
 #### CredentialStore
 
-`go-authenticator` includes a default credential authenticator that uses `CredentialStore`. You can set the `CredentialStore` by calling `Manager::SetCredentialStore`.
+**go-authenticator** includes a default credential authenticator that uses `CredentialStore`. You can set the `CredentialStore` by calling `Manager::SetCredentialStore`.
 
 ```go
 type CredentialStore interface {
@@ -85,7 +88,7 @@ To integrate user authentication into your application, refer to the examples be
 
 ### SASL Authentication
 
-`go-authenticator` includes the `go-sasl` package, providing SASL mechanisms for authentication. For details on using the SASL API, see the `go-sasl` documentation.
+**go-authenticator** includes the `go-sasl` package, providing SASL mechanisms for authentication. For details on using the SASL API, see the `go-sasl` documentation.
 
 - [go-sasl](https://github.com/cybergarage/go-sasl) ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/go-sasl)
 
