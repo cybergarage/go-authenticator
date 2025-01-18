@@ -1,5 +1,9 @@
 # Changelog  
 
+## v1.0.4 (2025-01-18)
+- Updated default credential authenticator to compare credentials based on variable type
+- Add a default credential authenticator interface
+- 
 ## v1.0.3 (2025-01-16) 
 - Updated Query interface
   - Added setter methods for the query parameters
