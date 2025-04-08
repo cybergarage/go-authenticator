@@ -22,19 +22,20 @@ import (
 type CertConfig interface {
 	// SetClientAuthType sets a client authentication type.
 	SetClientAuthType(authType tls.ClientAuthType)
-	// SetServerKeyFile sets a SSL server key file.
-	SetServerKeyFile(file string) error
-	// SetServerCertFile sets a SSL server certificate file.
-	SetServerCertFile(file string) error
-	// SetRootCertFile sets a SSL root certificates.
-	SetRootCertFiles(files ...string) error
 	// SetServerKey sets a SSL server key.
 	SetServerKey(key []byte)
 	// SetServerCert sets a SSL server certificate.
 	SetServerCert(cert []byte)
 	// SetRootCerts sets a SSL root certificates.
 	SetRootCerts(certs ...[]byte)
-	// SetTLSConfig sets a TLS configuration.
+	// SetServerKeyFile loads a SSL server key file and sets it.
+	SetServerKeyFile(file string) error
+	// SetServerCertFile loads a SSL server certificate file and sets it.
+	SetServerCertFile(file string) error
+	// SetRootCertFile loads SSL root certificate files and sets them.
+	SetRootCertFiles(files ...string) error
+	// SetTLSConfig sets a TLS configuration directly.
+	// If the provided configuration is nil, TLS will be disabled.
 	SetTLSConfig(tlsConfig *tls.Config)
 	// TLSConfig returns a TLS configuration from the configuration.
 	TLSConfig() (*tls.Config, error)
