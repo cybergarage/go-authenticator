@@ -1,6 +1,6 @@
 # Changelog  
 
-## v1.0.5 (2025-04-08)
+## v1.0.5 (2025-06-19)
 - Changed tls.Config::SetTLSConfig() to disable TLS if the specified configuration is nil
 
 ## v1.0.4 (2025-01-18)
