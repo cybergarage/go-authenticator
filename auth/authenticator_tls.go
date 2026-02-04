@@ -27,7 +27,7 @@ type certificateAuthenticator struct {
 // CertificateAuthenticatorOption is a function to set the certificate authenticator options.
 type CertificateAuthenticatorOption = func(*certificateAuthenticator) error
 
-// WithCertificateAuthenticatorCommonName sets the common name.
+// WithCommonNameRegexp sets the common name regular expressions to the certificate authenticator.
 func WithCommonNameRegexp(regexps ...string) CertificateAuthenticatorOption {
 	return func(ca *certificateAuthenticator) error {
 		for _, re := range regexps {

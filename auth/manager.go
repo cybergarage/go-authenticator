@@ -20,7 +20,7 @@ import (
 	"github.com/cybergarage/go-sasl/sasl/auth"
 )
 
-// CredentialAuthenticator is the credential authenticator.
+// CredentialStore is an alias of auth.CredentialStore.
 type CredentialStore = auth.CredentialStore
 
 // Mechanism represents a SASL mechanism.
